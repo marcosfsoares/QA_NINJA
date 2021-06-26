@@ -9,6 +9,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bson (4.12.0)
     builder (3.2.4)
     capybara (3.33.0)
       addressable
@@ -60,6 +61,8 @@ GEM
     middleware (0.1.0)
     mini_mime (1.1.0)
     minitest (5.14.4)
+    mongo (2.14.0)
+      bson (>= 4.8.2, < 5.0.0)
     multi_test (0.1.2)
     nokogiri (1.11.7-x64-mingw32)
       racc (~> 1.4)
@@ -105,9 +108,11 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bson (= 4.12)
   capybara (= 3.33)
   cucumber (= 5.2)
   faker (= 2.18)
+  mongo (= 2.14.0)
   rspec (= 3.10)
   selenium-webdriver (= 3.142.7)
 
