@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        docker {
+            image 'ruby'
+        }
+    }
+
+    stages {
+        stage('Configuration') {
+            steps {
+                sh 'bundle install'
+            }
+        }
+        stage('Testing') {
+            steps {
+                sh 'cucumber'
+            }
+        }
+    }
+}
