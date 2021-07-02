@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Configuration') {
             steps {
-                sh 'bundle install'
+                sh 'cd A180 && cd rocklov && bundle install'
             }
         }
         stage('Testing') {
             steps {
-                sh 'cucumber'
+                sh 'cd A180 && cd rocklov && cucumber'
             }
         }
     }
