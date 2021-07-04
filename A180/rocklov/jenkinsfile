@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'marcosfsoares/ruby-web-agent'
+            image 'marcosfsoares/rubi-web-agent'
             args '--network rocklov-network'
         }
     }
