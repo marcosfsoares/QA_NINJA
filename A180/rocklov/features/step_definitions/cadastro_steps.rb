@@ -1,11 +1,16 @@
+
+
 Dado('que acesso a página de cadastro') do
     visit "http://rocklov-web:3000/signup"
 
 end
 
 Quando('submeto o meu cadastro completo') do
+    MongoDB.new.remove_user("marcos.fsoares@yahoo.com")
+
     find("#fullName").set "Marcos Soares"
-    find("#email").set Faker::Internet.free_email #=> "freddy@gmail.com"
+    find("#email").set "marcos.fsoares@yahoo.com"
+    #find("#email").set Faker::Internet.free_email #=> "freddy@gmail.com"
 
     find("#password").set "senha"
     click_button "Cadastrar"
@@ -32,7 +37,8 @@ end
 Quando('submeto o meu cadastro sem o email') do
     find("#fullName").set "Marcos Soares"
     find("#password").set "senha"
-    click_button "Cadastrar"end
+    click_button "Cadastrar"
+end
 
 Então('vejo a mensagem de alerta: Oops. Informe um email válido!') do
     alert = find(".alert-dark")
