@@ -8,33 +8,22 @@ Funcionalidade: Cadastro
     Cenario: Fazer cadastro
 
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro completo
+        Quando submeto o formulario de cadastro:
+        |nome                |email                   |senha|
+        |Marcos Flavio Soares|marcos.fsoares@yahoo.com|senha|
         Então sou redirecionado para o Dashboard
     
-    @tentativa_cadastro
-    Cenario: Submeter cadastro sem o nome
-
+    Esquema do Cenario: Tentativa de cadastro
         Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem o nome
-        Então vejo a mensagem de alerta: Oops. Informe seu nome completo!
+        Quando submeto o formulario de cadastro:
+        |nome                |email        |senha        |
+        |<nome_input>        |<email_input>|<senha_input>|
+        Então vejo a mensagem de alerta: "<mensagem_output>"
+    Exemplos:
+    |nome_input          |email_input             |senha_input|mensagem_output|
+    |                    |marcos.fsoares@yahoo.com|senha      |Oops. Informe seu nome completo!|
+    |Marcos Flavio Soares|                        |senha      |Oops. Informe um email válido!  |
+    |Marcos Flavio Soares|marcos.fsoares%yahoo.com|senha      |Oops. Informe um email válido!  |
+    |Marcos Flavio Soares|marcos.fsoares#yahoo.com|senha      |Oops. Informe um email válido!  |
+    |Marcos Flavio Soares|marcos.fsoares@yahoo.com|           |Oops. Informe sua senha secreta!|
 
-    @tentativa_cadastro
-    Cenario: Submeter cadastro sem o email
-
-        Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem o email
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
-
-    @tentativa_cadastro
-    Cenario: Submeter cadastro com email incorreto
-
-        Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro com o email incorreto
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
-
-    @tentativa_cadastro
-    Cenario: Submeter cadastro sem a senha
-
-        Dado que acesso a página de cadastro
-        Quando submeto o meu cadastro sem a senha
-        Então vejo a mensagem de alerta: Oops. Informe sua senha secreta!
